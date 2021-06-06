@@ -1,0 +1,20 @@
+<div class="w-full mx-auto overflow-auto">
+  <table class="table-auto w-full text-left whitespace-no-wrap">
+    <thead>
+    <tr>
+      <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">Sr. No.</th>
+      <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Name</th>
+      <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Quantity</th>
+      <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Price</th>
+    </tr>
+    </thead>
+    <tbody *ngFor = "let item of items; let i = index;">
+    <tr class="text-center">
+      <td class="px-4 py-3">{{i+1}}</td>
+      <td class="px-4 py-3">{{item.name}}</td>
+      <td class="px-4 py-3">{{item.quantity}}</td>
+      <td class="px-4 py-3">{{item.price}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>
