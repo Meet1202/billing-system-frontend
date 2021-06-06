@@ -1,0 +1,45 @@
+<section class="text-gray-600 body-font bg-gray-100">
+  <div class="items-center p-8">
+    <form [formGroup]="myForm">
+      <mat-dialog-content class="mat-typography">
+      <div class="rounded-lg md:ml-auto w-full mt-10 md:mt-0">
+
+        <div class="relative mb-4" *ngIf="isEdit">
+          <label for="bill_number" class="leading-7 text-sm text-gray-600"><span class="text-red-700">*</span>Bill No</label>
+          <input type="text" [readonly]="isDisabled"  id="bill_number" name="date" formControlName = "bill_number"
+                 class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+        </div>
+
+        <div class="relative mb-4">
+          <label for="date" class="leading-7 text-sm text-gray-600"><span class="text-red-700">*</span>Date</label>
+          <input type="date" dataformatas="yyyy/mm/dd" id="date" name="date" formControlName = "date"
+                 class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+        </div>
+
+        <div class="relative mb-4" formArrayName="items">
+          <label class="leading-7 text-sm text-gray-600"><span class="text-red-700">*</span>Items</label>
+          <div [formGroupName]="i" class="d-flex justify-content-center mb-2" *ngFor="let item of items().controls; let i = index">
+            <input type="text" formControlName="name" placeholder="Item name" class="w-full mr-2 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+            <input type="number" formControlName="quantity" placeholder="Quantity" (change)="calculatedTotalPrice()" class="w-full mr-2 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+            <input type="number" formControlName="price" placeholder="Price" (change)="calculatedTotalPrice()" class="w-full mr-2 bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+            <button class="group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500" (click)="deleteItems(i)">-</button>
+          </div>
+          <button class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" type="button" (click)="addItems()">+</button>
+        </div>
+
+        <div class="relative mb-4">
+          <label class="leading-7 text-sm text-gray-600">Total Price:</label>
+          <label class="leading-7 text-sm ml-2 text-gray-600">{{total_price}}</label>
+        </div>
+
+        <div>
+          <button type="submit" (click)="addEditBill()" [disabled]="!myForm.valid"
+                  class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            {{isEdit ? 'Edit' : 'Add'}} Bill
+          </button>
+        </div>
+      </div>
+      </mat-dialog-content>
+    </form>
+  </div>
+</section>

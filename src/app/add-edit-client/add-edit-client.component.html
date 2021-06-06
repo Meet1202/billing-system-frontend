@@ -1,0 +1,25 @@
+<link rel="stylesheet" href="add-edit-client.component.scss">
+<section class="text-gray-600 body-font">
+  <div class="items-center">
+    <form [formGroup]="myForm">
+      <div class="bg-gray-100 rounded-lg p-8  md:ml-auto w-full mt-10 md:mt-0">
+        <div class="relative mb-4">
+          <label for="office_name" class="leading-7 text-sm text-gray-600"><span class="text-red-700">*</span>Office name</label>
+          <input type="text" id="office_name" name="office_name" formControlName = "office_name"
+                 class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+        </div>
+        <div class="relative mb-4">
+          <label for="name" class="leading-7 text-sm text-gray-600"><span class="text-red-700">*</span>Client name</label>
+          <input type="text" id="name" name="name" formControlName = "name"
+                 class="w-full bg-white rounded border border-gray-300 focus:border-indigo-500 focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+        </div>
+        <div>
+          <button type="submit" (click)="addEditClient()" [disabled]="!myForm.valid"
+                  class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+            {{isEdit ? 'Edit Client' : 'Add Client'}}
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</section>

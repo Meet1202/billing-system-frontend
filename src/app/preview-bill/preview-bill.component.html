@@ -1,0 +1,33 @@
+<div class="w-full mx-auto overflow-auto">
+  <h3 class="px-4 mt-2 text-center">Reciept</h3>
+  <div class="d-flex justify-content-between">
+    <p class="px-4 py-3">  Owner: DO </p>
+    <p class="px-4 py-3"> Client: {{client.name}}</p>
+  </div>
+  <table class="table-auto w-full text-left whitespace-no-wrap">
+    <thead>
+    <tr>
+      <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100 rounded-tl rounded-bl">Sr. No.</th>
+      <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Name</th>
+      <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Quantity</th>
+      <th class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="text-center" *ngFor = "let item of items; let i = index;">
+      <td class="px-4 py-3">{{i+1}}</td>
+      <td class="px-4 py-3">{{item.name}}</td>
+      <td class="px-4 py-3">{{item.quantity}}</td>
+      <td class="px-4 py-3">{{item.price}}</td>
+    </tr>
+    <tr class="text-center">
+      <td class="px-4 py-3">Total</td>
+      <td class="px-4 py-3"></td>
+      <td class="px-4 py-3"></td>
+      <td class="px-4 py-3">{{bill.total_price}}</td>
+    </tr>
+    </tbody>
+  </table>
+  <div>
+  </div>
+</div>
